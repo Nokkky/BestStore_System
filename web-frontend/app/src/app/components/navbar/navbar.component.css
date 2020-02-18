@@ -1,0 +1,14 @@
+.top-nav{
+  padding:0px 0px;
+}
+.navbar-brand{
+  color: #5e5e5e;
+  /* font-weight: bold; */
+  /* margin-left:20px; */
+}
+.navbar{
+  min-height: 75px;
+}
+.nav-link{
+  padding-left:0px;
+}

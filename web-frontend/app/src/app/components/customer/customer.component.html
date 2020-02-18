@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/customer']">All Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['add']">Add New Customer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Update Customer</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Customer</h4>
+          <p class="category">All Customers</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <th style="width:22.5%">Customer ID</th>
+              <th style="width:22.5%">Name</th>
+              <th style="width:22.5%">Kind</th>
+              <th style="width:32.5%">Address</th>
+              <th style="width:10%"></th>
+              <th style="width:10%"></th>
+
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customers">
+                <td>{{customer.customer_id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.kind}}</td>
+                <td>{{customer.address}}</td>
+                <td>
+                  <button (click)="onDeleteClick(customer.customer_id)" class="btn btn-danger">Delete</button>
+                </td>
+                <td>
+                  <button (click)="onUpdateClick(customer.customer_id,customer.kind)" class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+input{
+  border:1px solid #CCC5B9;
+}
+/* .login-body{
+  margin-bottom: 10px;
+  margin-top: 20px;
+} */
+@media(min-width:576px){
+  .card {
+    width: 430px;
+  }
+}

@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/customer']">All Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active">Add New Customer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Update Customer</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          Add Customer
+        </div>
+        <div class="card-body ">
+          <form #CustomerForm="ngForm" (ngSubmit)="onSubmit(CustomerForm)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" #customerName="ngModel" [ngClass]="{'is-invalid': customerName.errors && customerName.touched}"
+                [(ngModel)]="customer.name" minlength="3" maxlength="12" required>
+              <div [hidden]="!customerName.errors?.required" class="invalid-feedback">
+                Name required
+              </div>
+              <div [hidden]="!customerName.errors?.minlength && !customerName.errors?.maxlength" class="invalid-feedback">
+                Minimum 3 characters, maximum 12 characters
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" name="address" #customerAddress="ngModel" [ngClass]="{'is-invalid': customerAddress.errors && customerAddress.touched}"
+                [(ngModel)]="customer.address" minlength="5" maxlength="30" required>
+              <div [hidden]="!customerAddress.errors?.required" class="invalid-feedback">
+                Address required
+              </div>
+              <div [hidden]="!customerAddress.errors?.minlength && !customerAddress.errors?.maxlength" class="invalid-feedback">
+                Minimum 5 characters, maximum 30 characters
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <label for="kind">Customer Kind</label>
+              <select (click)="changeKind()" class="form-control" name="kind" #customerKind="ngModel" [ngClass]="{'is-invalid': customerKind.errors && customerKind.touched}"
+                [(ngModel)]="customer.kind" required>
+                <option value="">Customer Kind</option>
+                <option value="home">Home</option>
+                <option value="business">Business</option>
+              </select>
+              <div [hidden]="!customerKind.errors?.required" class="invalid-feedback">
+                Customer Kind required
+              </div>
+            </div>
+            
+            <!-- Home -->
+            <div class="form-group" *ngIf="isHome">
+              <label for="age">Age</label>
+              <input type="number" class="form-control" name="age" #customerAge="ngModel" [ngClass]="{'is-invalid': customerAge.errors && customerAge.touched}"
+                [(ngModel)]="customer.age" min="0" max="150" maxlength="2" required>
+              <div [hidden]="!customerAge.errors?.required" class="invalid-feedback">
+                Age required
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="isHome">
+              <label for="gender">Gender</label>
+              <select class="form-control" name="gender" #customerGender="ngModel" [ngClass]="{'is-invalid': customerGender.errors && customerGender.touched}"
+                [(ngModel)]="customer.gender" required>
+                <option value="">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <div [hidden]="!customerGender.errors?.required" class="invalid-feedback">
+                Gender required
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="isHome">
+              <label for="marry_status">Marry Status</label>
+              <select class="form-control" name="marry_status" #customerMarryStatus="ngModel" [ngClass]="{'is-invalid': customerMarryStatus.errors && customerMarryStatus.touched}"
+                [(ngModel)]="customer.marry_status" required>
+                <option value="">Marry Status</option>
+                <option value="married">Married</option>
+                <option value="single">Single</option>
+              </select>
+              <div [hidden]="!customerMarryStatus.errors?.required" class="invalid-feedback">
+                Marry Status required
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="isHome">
+              <label for="income">Income</label>
+              <input type="number" class="form-control" name="income" #customerIncome="ngModel" [ngClass]="{'is-invalid': customerIncome.errors && customerIncome.touched}"
+                [(ngModel)]="customer.income" min="0" max="100000000000" required>
+              <div [hidden]="!customerIncome.errors?.required" class="invalid-feedback">
+                Income required
+              </div>
+            </div>
+
+            <!-- Business-->
+
+            <div class="form-group" *ngIf="isBusiness" aria-required="false">
+              <label for="category">Category</label>
+              <select onchange="changeKind()" class="form-control" name="category" #customerCategory="ngModel" [ngClass]="{'is-invalid': customerCategory.errors && customerCategory.touched}"
+                [(ngModel)]="customer.category" required>
+                <option value="">Category</option>
+                <option value="computer">Computer</option>
+                <option value="game">Game</option>
+                <option value="financial">Financial</option>
+                <option value="innovative">Innovative</option>
+              </select>
+              <div [hidden]="!customerCategory.errors?.required" class="invalid-feedback">
+                Category required
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="isBusiness" aria-required="false">
+              <label for="company_income">Company Income</label>
+              <input type="number" class="form-control" name="company_income" #customerCompanyIncome="ngModel" [ngClass]="{'is-invalid': customerCompanyIncome.errors && customerCompanyIncome.touched}"
+                [(ngModel)]="customer.company_income" min="0" max="100000000000" required>
+              <div [hidden]="!customerCompanyIncome.errors?.required" class="invalid-feedback">
+                Company Income required
+              </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

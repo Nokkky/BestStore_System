@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " [routerLink]="['/product']">All Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active">Add New Product</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link disabled">Update Product</a>
+            </li>
+        </ul>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            Add Product
+          </div>
+          <div class="card-body ">
+            <form #ProductForm="ngForm" (ngSubmit)="onSubmit(ProductForm)">
+              <div class="form-group">
+                <label for="product_name">Name</label>
+                <input type="text" class="form-control" name="product_name" #productName="ngModel" [ngClass]="{'is-invalid': productName.errors && productName.touched}"
+                  [(ngModel)]="product.product_name" minlength="3" maxlength="12" required>
+                <div [hidden]="!productName.errors?.required" class="invalid-feedback">
+                  Name required
+                </div>
+                <div [hidden]="!productName.errors?.minlength && !productName.errors?.maxlength" class="invalid-feedback">
+                  Minimum 3 characters, maximum 12 characters
+                </div>
+              </div>
+
+              <div class="form-group ">
+                <label for="kind">Kind</label>
+                <select class="form-control" name="kind" #productKind="ngModel" [ngClass]="{'is-invalid': productKind.errors && productKind.touched}"
+                  [(ngModel)]="product.kind" required>
+                  <option value="">Kind</option>
+                  <option value="laptop">Laptop</option>
+                  <option value="pc">PC</option>
+                  <option value="tablet">Tablet</option>
+                  <option value="2-in-1">2-in-1</option>
+
+                </select>
+                <div [hidden]="!productKind.errors?.required" class="invalid-feedback">
+                  Kind required
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="cost">Cost</label>
+                <input type="number" class="form-control" name="cost" #productCost="ngModel" [ngClass]="{'is-invalid': productCost.errors && productCost.touched}"
+                  [(ngModel)]="product.cost" min="0" max="100000" required>
+                <div [hidden]="!productCost.errors?.required" class="invalid-feedback">
+                  Coust required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" name="price" #productPrice="ngModel" [ngClass]="{'is-invalid': productPrice.errors && productPrice.touched}"
+                  [(ngModel)]="product.price" min="1" max="100000" required>
+                <div [hidden]="!productPrice.errors?.required" class="invalid-feedback">
+                  Price required
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" name="amount" #productAmount="ngModel" [ngClass]="{'is-invalid': productAmount.errors && productAmount.touched}"
+                  [(ngModel)]="product.amount" min="0" max="100000" required>
+                <div [hidden]="!productAmount.errors?.required" class="invalid-feedback">
+                  Amount required
+                </div>
+              </div>
+
+              <input type="submit" value="Submit" class="btn btn-primary btn-block">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/store']">All Stores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['add']">Add New Store</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Update Store</a>
+          </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Store</h4>
+          <p class="category">All Stores</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <th style="width:17.5%">Store ID</th>
+              <th style="width:17.5%">Manager</th>
+              <th style="width:17.5%">Region ID</th>
+              <th style="width:17.5%">Salespersons_num</th>
+              <th style="width:30%">Address</th>
+              <th style="width:10%"></th>
+              <th style="width:10%"></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let store of stores">
+                <td>{{store.store_id}}</td>
+                <td>{{store.manager}}</td>
+                <td>{{store.region_id}}</td>
+                <td>{{store.salespersons_num}}</td>
+                <td>{{store.address}}</td>
+                <td class="">
+                  <button (click)="onDeleteClick(store.store_id)" class="btn btn-danger">Delete</button>
+                </td>
+                <td><button (click)="onUpdateClick(store.store_id)" class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

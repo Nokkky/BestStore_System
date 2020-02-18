@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/inventory']">All Inventorys</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active">Add New Inventory</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          Add Inventory
+        </div>
+        <div class="card-body ">
+          <form #InventoryForm="ngForm" (ngSubmit)="onSubmit(InventoryForm)">
+            <div class="form-group">
+              <label for="product_id">Product ID</label>
+              <input type="number" class="form-control" name="product_id" #inventoryProductId="ngModel" [ngClass]="{'is-invalid': inventoryProductId.errors && inventoryProductId.touched}"
+                [(ngModel)]="inventory.product_id" min="10000" max="20000" required>
+              <div [hidden]="!inventoryProductId.errors?.required" class="invalid-feedback">
+                Product ID
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input type="number" class="form-control" name="quantity" #inventoryQuantity="ngModel" [ngClass]="{'is-invalid': inventoryQuantity.errors && inventoryQuantity.touched}"
+                [(ngModel)]="inventory.quantity" min="1" max="100000" required>
+              <div [hidden]="!inventoryQuantity.errors?.required" class="invalid-feedback">
+                Amount required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="order_date">Order Date</label>
+              <input type="string" disabled="disabled" class="form-control" name="order_date" #inventoryOrderDate="ngModel" [ngClass]="{'is-invalid': inventoryOrderDate.errors && inventoryOrderDate.touched}"
+                [(ngModel)]="inventory.order_date" required>
+              <div [hidden]="!inventoryOrderDate.errors?.required" class="invalid-feedback">
+                Order Date
+              </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " [routerLink]="['/dashboard/agg-1']">Total Sales</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/dashboard/agg-2']">Total Profits</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link " [routerLink]="['/dashboard/agg-3']">Top Product Categories</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link " [routerLink]="['/dashboard/agg-4']">Top Business </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link " [routerLink]="['/dashboard/agg-5']">Region Sales Compare</a>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Total Profits</h4>
+            <p class="category">Data Statistic</p>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-striped">
+              <thead>
+                <th>Product Name</th>
+                <th>Product Profit(Price - Cost)</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let aggregation of aggregations">
+                  <td>{{aggregation.product_name}}</td>
+                  <td>{{aggregation.profit}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/dashboard/agg-1']">Total Sales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/dashboard/agg-2']">Total Profits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/dashboard/agg-3']">Top Product Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/dashboard/agg-4']">Top Business </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/dashboard/agg-5']">Region Sales Compare</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-12">
+      <form #ProductForm="ngForm" (ngSubmit)="onSubmit(ProductForm)">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="product_id">Product ID</label>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" name="product_id" #productID="ngModel" [ngClass]="{'is-invalid': productID.errors && productID.touched}"
+                [(ngModel)]="aggregation.product_id" minlength="2" maxlength="12" required>
+              <div [hidden]="!productID.errors?.required" class="invalid-feedback">
+                Name required
+              </div>
+              <div [hidden]="!productID.errors?.minlength && !productID.errors?.maxlength" class="invalid-feedback">
+                Minimum 2 characters, maximum 12 characters
+              </div>
+            </div>
+            <div class="col-md-2">
+              <input type="submit" value="Search" class="btn btn-primary btn-block">
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Total Sales</h4>
+          <p class="category">Data Statistic</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <th>Business category</th>
+              <th>Total Purchase</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let aggregation of aggregations">
+                <td>{{aggregation.category}}</td>
+                <td>{{aggregation.sum_quantity}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

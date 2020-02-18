@@ -1,0 +1,11 @@
+.nav-item button{
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #ccc;
+}
+.header{
+  margin-bottom:20px;
+}
+.head-nav-tabs{
+  border-bottom: 0px;
+}

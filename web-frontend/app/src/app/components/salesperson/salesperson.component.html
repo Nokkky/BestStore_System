@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/salesperson']">All Salespersons</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['add']">Add New Salesperson</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Update Salesperson</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Salesperson</h4>
+          <p class="category">All Salespersons</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <th style="width:11.428%">Salesperson ID</th>
+              <th style="width:11.428%">Name</th>
+              <th style="width:11.428%">Job</th>
+              <th style="width:11.428%">Store ID</th>
+              <th style="width:11.428%">Salary</th>
+              <th style="width:21.428%">Email</th>
+              <th style="width:21.428%">Address</th>
+              <th style="width:10%"></th>
+              <th style="width:10%"></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let salesperson of salespersons">
+                <td>{{salesperson.salesperson_id}}</td>
+                <td>{{salesperson.name}}</td>
+                <td>{{salesperson.job_title}}</td>
+                <td>{{salesperson.store_id}}</td>
+                <td>{{salesperson.salary}}</td>
+                <td>{{salesperson.email}}</td>
+                <td>{{salesperson.address}}</td>
+                <td>
+                  <button (click)="onDeleteClick(salesperson.salesperson_id)" class="btn btn-danger">Delete</button>
+                </td>
+                <td><button (click)="onUpdateClick(salesperson.salesperson_id)" class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

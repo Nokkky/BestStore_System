@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/product']">All Products</a>
+        </li>
+        <li *ngIf="isRegionManager" class="nav-item">
+          <a class="nav-link " [routerLink]="['add']">Add New Product</a>
+        </li>
+        <li *ngIf="isRegionManager" class="nav-item">
+          <a class="nav-link disabled">Update Product</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Product</h4>
+          <p class="category">All Products</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <th style="width:16.66%">Product ID</th>
+              <th style="width:16.66%">Name</th>
+              <th style="width:16.66%">Kind</th>
+              <th style="width:16.66%">Cost</th>
+              <th style="width:16.66%">Price</th>
+              <th style="width:16.66%">Amount</th>
+              <th *ngIf="isRegionManager" style="width:10%"></th>
+              <th *ngIf="isRegionManager" style="width:10%"></th>
+
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.product_id}}</td>
+                <td>{{product.product_name}}</td>
+                <td>{{product.kind}}</td>
+                <td>{{product.cost}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.amount}}</td>
+                <td *ngIf="isRegionManager">
+                  <button (click)="onDeleteClick(product.product_id)" class="btn btn-danger">Delete</button>
+                </td>
+                <td *ngIf="isRegionManager">
+                  <button (click)="onUpdateClick(product.product_id)" class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

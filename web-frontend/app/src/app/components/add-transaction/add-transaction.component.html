@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/transaction']">All Transactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active">Add New Transaction</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          Add Transaction
+        </div>
+        <div class="card-body ">
+          <form #TransactionForm="ngForm" (ngSubmit)="onSubmit(TransactionForm)">
+            <div class="form-group">
+              <label for="product_id">Product ID</label>
+              <input type="number" class="form-control" name="product_id" #transactionProductId="ngModel" [ngClass]="{'is-invalid': transactionProductId.errors && transactionProductId.touched}"
+                [(ngModel)]="transaction.product_id" min="10000" max="20000" required>
+              <div [hidden]="!transactionProductId.errors?.required" class="invalid-feedback">
+                Product ID
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="customer_id">Customer ID</label>
+              <input type="number" class="form-control" name="customer_id" #transactionCustomerId="ngModel" [ngClass]="{'is-invalid': transactionCustomerId.errors && transactionCustomerId.touched}"
+                [(ngModel)]="transaction.customer_id" min="10000" max="20000" required>
+              <div [hidden]="!transactionCustomerId.errors?.required" class="invalid-feedback">
+                Customer ID
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input type="number" class="form-control" name="quantity" #transactionQuantity="ngModel" [ngClass]="{'is-invalid': transactionQuantity.errors && transactionQuantity.touched}"
+                [(ngModel)]="transaction.quantity" min="0" max="100000" required>
+              <div [hidden]="!transactionQuantity.errors?.required" class="invalid-feedback">
+                Amount required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="salesperson_id">Salesperson ID</label>
+              <input type="number" disabled="disabled" class="form-control" name="salesperson_id" #transactionSalespersonId="ngModel" [ngClass]="{'is-invalid': transactionSalespersonId.errors && transactionSalespersonId.touched}"
+                [(ngModel)]="transaction.salesperson_id" min="10000" max="20000"  required>
+              <div [hidden]="!transactionSalespersonId.errors?.required" class="invalid-feedback">
+                Salesperson ID
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="store_id">Store ID</label>
+              <input type="number" disabled="disabled" class="form-control" name="store_id" #transactionStoreId="ngModel" [ngClass]="{'is-invalid': transactionStoreId.errors && transactionStoreId.touched}"
+                [(ngModel)]="transaction.store_id" min="10000" max="20000" required>
+              <div [hidden]="!transactionStoreId.errors?.required" class="invalid-feedback">
+                Store ID
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="order_date">Order Date</label>
+              <input type="string" disabled="disabled" class="form-control" name="order_date" #transactionOrderDate="ngModel" [ngClass]="{'is-invalid': transactionOrderDate.errors && transactionOrderDate.touched}"
+                [(ngModel)]="transaction.order_date" required>
+              <div [hidden]="!transactionOrderDate.errors?.required" class="invalid-feedback">
+                Order Date
+              </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

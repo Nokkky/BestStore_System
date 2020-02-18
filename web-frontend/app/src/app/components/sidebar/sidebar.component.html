@@ -1,0 +1,59 @@
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <a href="#" class="simple-text">
+        TP&T SALES
+      </a>
+    </div>
+    <ul class="nav">
+      <li class="" (click)="changeColor0()">
+        <a id="cs0" [routerLink]="['/browser']" class="nav-link">
+          <i class="fa fa-th-list"></i>
+          BROWSER
+        </a>
+      </li>
+      <li *ngIf="isSalesperson" class="" (click)="changeColor1()">
+        <a id="cs1" [routerLink]="['/customer']" class="nav-link">
+          <i class="fa fa-users"></i>
+          CUSTOMER
+        </a>
+      </li>
+      <li *ngIf="isSalesperson || isRegionManager" class="" (click)="changeColor2()">
+        <a id="cs2" [routerLink]="['/product']" class="nav-link">
+          <i class="fa fa-shopping-cart"></i>
+          PRODUCT
+        </a>
+      </li>
+      <li *ngIf="isSalesperson" class="" (click)="changeColor3()">
+        <a id="cs3" [routerLink]="['/transaction']" class="nav-link">
+          <i class="fa fa-file-text"></i>
+          TRANSACTION
+        </a>
+      </li>
+      <li *ngIf="isStoreManager" class="" (click)="changeColor4()">
+        <a id="cs4" [routerLink]="['/salesperson']" class="nav-link">
+          <i class="fa fa-vcard"></i>
+          SALESPERSON
+        </a>
+      </li>
+      <li *ngIf="isRegionManager" class="" (click)="changeColor5()">
+        <a id="cs5" [routerLink]="['/store']" class="nav-link">
+          <i class="fa fa-home"></i>
+          STORE
+        </a>
+      </li>
+      <li *ngIf="isRegionManager" class="" (click)="changeColor6()">
+        <a id="cs6" [routerLink]="['/inventory']" class="nav-link">
+          <i class="fa fa-truck"></i>
+          INVENTORY
+        </a>
+      </li>
+      <li *ngIf="isRegionManager" class="" (click)="changeColor7()">
+        <a id="cs7" [routerLink]="['/dashboard']" class="nav-link">
+          <i class="fa fa-bar-chart"></i>
+          DASHBOARD
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
